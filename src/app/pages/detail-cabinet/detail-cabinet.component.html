@@ -1,0 +1,113 @@
+<div class="page" #myDiv>
+    <app-navbar></app-navbar>
+    
+    <div class="detail-cabinet animate__animated animate__backInDown" #target2>
+        <button class="btn btn-retour" pTooltip="Retourner à la liste" tooltipPosition="top">
+            <mat-icon>reply</mat-icon>
+        </button>
+        <div class="detail-content">
+            <div class="text-center part-1">
+                <img src="../../../assets/images/dr.png" alt="" srcset="">
+                <h2>Dr Bassirou Ba</h2>
+            </div>
+            <div class="part-2">
+                <div class="title-1">
+                    <h1>Clinique Cheikh Bassirou Mbacké</h1>
+                    <br>
+                    <span><mat-icon> place</mat-icon> Dakar - Sicap Liberté 4 N° 5149Q</span>
+                    <span><mat-icon> phone</mat-icon> +221 33 124 56 78</span>
+                    <span><mat-icon>event</mat-icon> Lun - Sam</span>
+                    <span><mat-icon>schedule</mat-icon> 8h - 19h</span>
+                </div>
+                <div class="title-2">
+                    <br>
+                    <br>
+                    <br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere esse dolore incidunt assumenda repudiandae nobis blanditiis cupiditate ratione vitae doloribus.</p>
+                </div>
+                
+                <button class="btn btn-dmd" (click)="openDemande(target)">
+                    Demander un rendez-vous
+                    <mat-icon size="80">keyboard_arrow_down</mat-icon>
+                </button>
+            
+            </div>
+            
+        </div>
+        <div class="part-bas">
+            <span>Médecine générale</span>
+            <span>Ophtalmologie</span>
+            <span>Pédiatrie</span>
+            <span>Cardialogie</span>
+        </div>
+    </div>
+    <div class="part-demande animate__animated animate__backInUp" #target [hidden]="!isView">
+        <div class="my-header">
+            <h1>Formulaire de demande de rendez-vous</h1>
+            <button class="btn" (click)="closeDemande(target2)" pTooltip="Annuler" tooltipPosition="top">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <form action="" class="my-form">
+            <div class="my-grid">
+                <div class="field">
+                    <label for="username1" class="block">Prénom</label>
+                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="Mamadou" />
+                </div>
+
+                <div class="field">
+                    <label for="username1" class="block">Nom</label>
+                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="NDAO" />
+                </div>
+
+                <div class="field">
+                    <label for="username1" class="block">Age</label>
+                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="28 ans" />
+                </div>
+                
+            </div>
+            <div class="my-grid">
+                <div class="field">
+                    <label for="username1" class="block">Sexe</label>
+                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="Homme" />
+                </div>
+
+                <div class="field">
+                    <label for="username1" class="block">Téléphone</label>
+                    <input id="username1" type="username" aria-describedby="username1-help" pInputText value="+221785824772" />
+                </div>
+
+                <div class="field">
+                    <label for="username1" class="block">Email</label>
+                    <input id="username1" type="username" aria-describedby="username1-help" pInputText value="itech.ndao@gmail.com" />
+                </div>
+            </div>
+
+            <div class="my-grid">
+                <div class="field">
+                    <label for="username1" class="block">Nom de la clinique</label>
+                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="Clinique Cheikh Bassirou Mbacké" />
+                </div>
+                <div class="field">
+                    <label for="username1" class="block">Téléphone de la clinique</label>
+                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="+221 33 800 00 12" />
+                </div>
+                <div class="my-flex">
+                    <div class="field">
+                        <label for="username1" class="block">Date</label>
+                        <p-calendar [(ngModel)]="value" [showIcon]="true" [minDate]="minDate"  dateFormat="dd-mm-yy" inputId="dateformat"></p-calendar>
+                    </div>
+
+                    <div class="field">
+                        <label for="username1" class="block">Heure</label>
+                        <p-calendar [(ngModel)]="value"  [timeOnly]="true" hourFormat="24" inputId="timeOnly"></p-calendar>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-valider">Envoyer ma demenade</button>
+        </form>
+    </div>
+    
+
+    <app-footer></app-footer>
+</div>

@@ -1,0 +1,30 @@
+<div class="parent">
+    <div class="row">
+        <div class="col-5 poster"></div>
+        <div class="col-7 login d-flex justify-content-center align-items-center">
+                <div class="form-login">
+                    <img src="../../../assets/images/logo-03.png" alt="" srcset="" width="120">
+
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-3">
+                          <label for="exampleInputEmail1" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="exampleInputEmail1" formControlName="username">
+                        </div>
+                        <div class="mb-3">
+                          <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                        </div>
+                        <div class="mb-3 form-check">
+                          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                          <label class="form-check-label" for="exampleCheck1">Se souvenir de moi</label>
+                        </div>
+                        <div class="part-btn">
+                          <button [disabled]="!loginForm.valid" type="submit" class="btn btn-conn">Se connecter</button>
+                          <button  class="btn btn-insc">S'inscrire</button>
+                        </div>
+                        
+                      </form>
+                </div>
+        </div>
+    </div>
+</div>

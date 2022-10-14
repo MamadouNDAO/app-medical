@@ -1,0 +1,122 @@
+<div class="body-home">
+    <ng-template #content let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title"></h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body my-row">
+          <div class="col-4 modal-part-1">
+            <div class="layer">
+                
+                <img src="../../../assets/images/logo-03.png" width="200" alt="" srcset="">
+                <h1 class="color-white">Toujours plus proche de vous!</h1>
+            </div>
+          </div>
+          <div class="col-8 modal-part-2">
+            <form action="">
+                <h2>Prise de rendez-vous</h2>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
+                <br>
+                <br>
+                <div class="my-row-2">
+                    <div class="my-col-5">
+                        <h5>Choisir une région</h5>
+                        <p-autoComplete [(ngModel)]="selectedRegions" placeholder="Région..." [suggestions]="filteredRegions" name="region" (completeMethod)="filterRegions($event)" field="name" [dropdown]="true">
+                            <ng-template let-reg pTemplate="item">
+                                <div class="country-item">
+                                    
+                                    <div>{{reg.name}}</div>
+                                </div>
+                            </ng-template>
+                        </p-autoComplete>
+                    </div>
+                    <div class="my-col-5">
+                        <h5>Choisir un département</h5>
+                        <p-autoComplete [(ngModel)]="selectedDepartements" placeholder="Département..." [suggestions]="filteredDepartements" name="departm" (completeMethod)="filterDepartements($event)" field="name" [dropdown]="true">
+                            <ng-template let-dep pTemplate="item">
+                                <div class="country-item">
+                                    
+                                    <div>{{dep.name}}</div>
+                                </div>
+                            </ng-template>
+                        </p-autoComplete>
+                    </div>
+                  
+                </div>
+                <br><br>
+
+                <div class="my-row-2">
+                    <div class="my-col-5">
+                        <h5>Choisir une spécialité</h5>
+                        <p-autoComplete [(ngModel)]="selectedDomaines" placeholder="Spécialité..." [suggestions]="filteredDomaines" name="domaine" (completeMethod)="filterDomaines($event)" field="name" [dropdown]="true">
+                            <ng-template let-dom pTemplate="item">
+                                <div class="country-item">
+                                    
+                                    <div>{{dom.name}}</div>
+                                </div>
+                            </ng-template>
+                        </p-autoComplete>
+                    </div>
+                    <div class="my-col-5">
+                        <h5>Choisir un cabinet médical</h5>
+                        <p-autoComplete [(ngModel)]="selectedCabinets" placeholder="Cabinet médical..." [suggestions]="filteredCabinets" name="cabinet" (completeMethod)="filterCabinets($event)" field="name" [dropdown]="true">
+                            <ng-template let-cab pTemplate="item">
+                                <div class="country-item">
+                                    
+                                    <div>{{cab.name}}</div>
+                                </div>
+                            </ng-template>
+                        </p-autoComplete>
+                    </div>
+                  
+                </div>
+                <button class="btn my-btn-search">Rechercher</button>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Annuler</button>
+        </div>
+    </ng-template>
+      
+    <app-navbar></app-navbar>
+
+    <div class="heads d-flex flex-column justify-content-center align-items-center">
+        <mat-icon>home</mat-icon>
+        <h4>Bienvenu(e) dans votre plateform <strong style="color: var(--color-primary);">App-Medical</strong></h4>
+        
+    </div>
+    <div class="home row">
+        <div class="col part-1">
+            <div class="bloc-text">
+                <h1>Passez votre rendez-vous en un seul clic</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, aliquam!</p>
+            </div>
+        </div>
+        <div class="col part-2"></div>
+        
+    </div>
+    <div class="bloc-cadre">
+        <div class="bloc-card">
+            <h2>Demander un rendez-vous</h2>
+            <button class="btn btn1" (click)="openLg(content)">Rendez-vous</button>
+        </div>
+        <div class="bloc-card">
+            <h2>Lister mes rendez-vous</h2>
+            <button class="btn btn2">Rendez-vous</button>
+        </div>
+    </div>
+    <div class="section home-section">
+
+    </div>
+
+    <div class="second-section">
+        <img src="../../../assets/images/bg-10.jpg" alt="" srcset="">
+        <div class="my-text">
+            <h1>Avec <strong>App-Medical</strong></h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+</div>
