@@ -4,13 +4,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { ListeCabinetComponent } from './pages/liste-cabinet/liste-cabinet.component';
 import { DetailCabinetComponent } from './pages/detail-cabinet/detail-cabinet.component';
+import { InscriptionComponent } from './pages/inscription/inscription.component';
 
 const routes: Routes = [
   {path: "", pathMatch: 'full', redirectTo: 'login'},
   {path:'login', component: LoginComponent},
   {path: 'acceuil', component: HomeComponent},
   {path: 'cabinets/list', component:ListeCabinetComponent},
-  {path: 'cabinets/:id', component: DetailCabinetComponent}
+  {path: 'cabinets/:id', component: DetailCabinetComponent},
+  {path: 'inscription', component: InscriptionComponent}
 ];
 
 @NgModule({

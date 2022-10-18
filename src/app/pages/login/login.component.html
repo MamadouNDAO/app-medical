@@ -20,7 +20,9 @@
                         </div>
                         <div class="part-btn">
                           <button [disabled]="!loginForm.valid" type="submit" class="btn btn-conn">Se connecter</button>
-                          <button  class="btn btn-insc">S'inscrire</button>
+                          <a routerLink="/inscription">
+                            <button  class="btn btn-insc">S'inscrire</button>
+                          </a>
                         </div>
                         
                       </form>

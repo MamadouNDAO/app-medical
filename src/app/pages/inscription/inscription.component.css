@@ -1,0 +1,115 @@
+.lapage{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.part1{
+    width: 50%;
+    background: url(../../../assets/images/img-16.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+.part2{
+    width: 50%;
+    background: #f6fff8;
+}
+
+.title{
+    width: 92%;
+    margin: 20px auto auto auto;
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(6,214,160,0.4265056364342612) 0%, rgba(255,255,255,0.38728995015975143) 80%);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    text-align: center;
+}
+
+.title h1{
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: auto;
+}
+
+form{
+    width: 92%;
+    margin: 20px auto auto auto;
+    border-radius: 10px;
+    padding: 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    /*box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;*/
+    background: #f6fff8;
+}
+.my-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(80px, auto);
+}
+
+.my-grid-3{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px auto 30px auto;
+}
+
+.mybtn{
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    color: #fff;
+}
+
+.mybtn2{
+    border: solid 1px #00C9FF;
+    color: #00C9FF;
+}
+
+.cadre-photo{
+    width: 300px;
+    height: 120px;
+    margin: auto auto 10px auto;
+    background: #fff;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.profil > img{
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    border: solid 1px var(--color-primary);
+    margin: auto;
+    object-fit: cover;
+    object-position: center;
+}
+
+.profil{
+    position: relative;
+}
+
+.profil > button{
+    position: absolute;
+    bottom: 0px;
+    right: 0%;
+}

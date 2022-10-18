@@ -21,6 +21,8 @@ import {TooltipModule} from 'primeng/tooltip';
 import {InputTextModule} from 'primeng/inputtext';
 import {CalendarModule} from 'primeng/calendar';
 import {HttpClientModule} from '@angular/common/http';
+import { InscriptionComponent } from './pages/inscription/inscription.component';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import {HttpClientModule} from '@angular/common/http';
     ListeCabinetComponent,
     SearchCabinetComponent,
     DetailCabinetComponent,
-    ScrollToBottomDirective
+    ScrollToBottomDirective,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import {HttpClientModule} from '@angular/common/http';
     InputTextModule,
     CalendarModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,72 @@
+<div class="lapage">
+    <div class="part1">
+
+    </div>
+    <div class="part2">
+        <div class="title">
+            <h1>Inscrivez-vous</h1>
+        </div>
+
+        <form action="">
+            <div class="cadre-photo">
+                <div class="profil">
+                    <img width="100" height="100"  [src]="urlImage" alt="">
+                    <button mat-mini-fab color="green" (click)="inputField.click()">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+                <input #inputField type="file" hidden (change)="getImageFile($event)">
+            </div>
+            <div class="my-grid">
+                <div class="field form-group">
+                    <label for="exampleFormControlInput1">Votre prénom</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Votre prénom">
+                </div>
+                <div class="field form-group">
+                    <label for="exampleFormControlInput1">Votre nom</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Votre nom">
+                </div>
+            </div>
+
+            <div class="my-grid">
+                <div class="field form-group">
+                    <label for="exampleFormControlInput1">Votre mot de passe</label>
+                    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Mot de passe">
+                </div>
+                <div class="field form-group">
+                    <label for="exampleFormControlInput1">Veuillez confirmer votre mot de passe</label>
+                    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Confirmation mot de passe">
+                </div>
+            </div>
+
+            <div class="my-grid">
+                <div class="field form-group">
+                    <label for="exampleFormControlInput1">Votre date de naissance</label>
+                    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="jj/mm/aaaa">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">Genre</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>Homme</option>
+                      <option>Femme</option>
+                    </select>
+                  </div>
+                
+            </div>
+
+
+            <div class="field form-group">
+                <label for="exampleFormControlInput1">Votre addresse</label>
+                <textarea type="text" class="form-control" id="exampleFormControlInput1" placeholder="Votre addresse"></textarea>
+            </div>
+
+            <div class="my-grid-3">
+                <button class="btn mybtn">Enregistrer</button>
+                <div></div>
+                <a routerLink="/login">
+                    <button class="btn mybtn2">Se connecter</button>
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
