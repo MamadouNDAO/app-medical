@@ -5,14 +5,21 @@ import { HomeComponent } from './pages/home/home.component';
 import { ListeCabinetComponent } from './pages/liste-cabinet/liste-cabinet.component';
 import { DetailCabinetComponent } from './pages/detail-cabinet/detail-cabinet.component';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
+import { RendezVousComponent } from './pages/rendez-vous/rendez-vous.component';
+import { DossierMedicalComponent } from './pages/dossier-medical/dossier-medical.component';
+import { SqueletteComponent } from './share/squelette/squelette.component';
+import { GuardService as Guard } from './services/guard.service';
 
 const routes: Routes = [
   {path: "", pathMatch: 'full', redirectTo: 'login'},
   {path:'login', component: LoginComponent},
-  {path: 'acceuil', component: HomeComponent},
-  {path: 'cabinets/list', component:ListeCabinetComponent},
-  {path: 'cabinets/:id', component: DetailCabinetComponent},
-  {path: 'inscription', component: InscriptionComponent}
+  {path: 'acceuil', component: HomeComponent, canActivate: [Guard]},
+  {path: 'cabinets-medicaux', component:ListeCabinetComponent, canActivate: [Guard]},
+  {path: 'cabinets/:id', component: DetailCabinetComponent, canActivate: [Guard]},
+  {path: 'inscription', component: InscriptionComponent, canActivate: [Guard]},
+  {path: 'racine', component: SqueletteComponent, canActivate: [Guard]},
+  {path:'rendez-vous', component: RendezVousComponent, canActivate: [Guard]},
+  {path: 'dossier-medical', component: DossierMedicalComponent, canActivate: [Guard]}
 ];
 
 @NgModule({

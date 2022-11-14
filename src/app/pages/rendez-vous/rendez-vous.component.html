@@ -1,0 +1,72 @@
+
+
+<app-navbar></app-navbar> 
+<div class="container home-sql"> 
+    <div class="content-of-squlette">
+        <app-squelette></app-squelette>
+    </div>
+    
+    <div class="body-content-sql">
+        <div class="title-info">
+            <div class="title-info-2">
+                <span>
+                    <p-badge [value]="encours" severity="success"></p-badge>
+                    En cours
+                </span>
+
+                <span>
+                    <p-badge [value]="attente" severity="warning"></p-badge>
+                    En attente
+                </span>
+                <span>
+                    <p-badge [value]="annule" severity="danger"></p-badge>
+                    Annulé
+                </span>
+                <span>
+                    <p-badge [value]="termine" severity="info"></p-badge>
+                    Terminé
+                </span>
+            </div>
+            <button class="btn btn1" pTooltip="Actualiser" tooltipPosition="top">
+                <mat-icon>update</mat-icon>
+            </button>
+        </div>
+        
+        <div class="card-list" *ngFor="let item of rendezvous">
+            <h3>{{ item.cabinet }}</h3>
+            <div class="info-flex-1">
+                <div class="info-flex">
+                    <span class="info-span"><mat-icon>event</mat-icon>{{ item.date }}</span>
+                    <span class="info-span"><mat-icon>schedule</mat-icon>{{ item.horaire }}</span>
+                    <span class="info-span"><mat-icon>gamepad</mat-icon>{{ item.domaine }}</span>
+                    <span class="info-statut">{{ item.statut }}</span>
+                    
+                </div>
+                <button class="btn btn-vert" *ngIf="item.statut=='EN ATTENTE'">Annuler</button>
+             </div>
+        </div>
+        <br>
+        <p-paginator [rows]="10" [totalRecords]="row" (onPageChange)="paginate($event)"></p-paginator>
+    
+    </div>
+
+     <div class="lateral-right">
+        <button class="btn lateral-btn">
+            Demander un rendez vous
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <button class="btn lateral-btn">
+            Cabinets médicaux
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <button class="btn lateral-btn">
+            Mon dossier médical
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+        <button class="btn lateral-btn">
+            Demander un rendez vous
+            <mat-icon>keyboard_arrow_right</mat-icon>
+        </button>
+    </div> 
+</div>
+<app-footer></app-footer>

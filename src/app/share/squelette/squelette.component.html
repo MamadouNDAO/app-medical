@@ -1,0 +1,28 @@
+
+
+    <div class="lateral-left">
+        <div class="part-profil">
+            <div class="couverture"> 
+                <img [src]="urlImg" alt="" srcset="">
+            </div>
+            
+            <div class="info-name">
+                <h2>{{ name }}</h2>
+                <span>Patient</span>
+            </div>
+            
+        </div>
+        <div class="info-perso">
+            <span><strong>Email:</strong> {{ email }}</span>
+            <span><strong>Tél:</strong> {{ tel }}</span>
+            <span><strong>Age:</strong> {{ age }} ans</span>
+            <span><strong>Sexe:</strong> {{ genre }}</span>
+        </div>
+
+    </div>
+    <div class="body-content">
+        <router-outlet name="racine"></router-outlet>
+    </div>
+
+    
+

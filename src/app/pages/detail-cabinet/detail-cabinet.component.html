@@ -1,113 +1,141 @@
 <div class="page" #myDiv>
+    <p-toast></p-toast>
+    <p-dialog [(visible)]="display" [style]="{width: '30vw'}">
+        <ng-template pTemplate="header">
+            Demande de rensez-vous
+        </ng-template>
+            <div class="info-alert">
+                <div class="circle">
+                    <i class="pi pi-check" style="font-size: 2rem"></i>
+                </div>
+                <span>{{ msg }} </span>
+            </div>
+        <ng-template pTemplate="footer">
+            <a routerLink="/rendez-vous"><button class="btn btn-vert">OK</button></a>
+        </ng-template>
+    </p-dialog>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title">Formulaire de demande de rendez-vous</h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <div class="my-form">
+                <div class="my-grid">
+                    <div class="field">
+                        <label for="username1" class="block">Prénom</label>
+                        <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="Marie Anne" />
+                    </div>
+    
+                    <div class="field">
+                        <label for="username1" class="block">Nom</label>
+                        <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="Faye" />
+                    </div>
+    
+                    <div class="field">
+                        <label for="username1" class="block">Age</label>
+                        <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="23 ans" />
+                    </div>
+                    
+                </div>
+                <div class="my-grid">
+                    <div class="field">
+                        <label for="username1" class="block">Sexe</label>
+                        <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="Femme" />
+                    </div>
+    
+                    <div class="field">
+                        <label for="username1" class="block">Téléphone</label>
+                        <input id="username1" type="username" aria-describedby="username1-help" pInputText value="+221770976057" />
+                    </div>
+    
+                    <div class="field">
+                        <label for="username1" class="block">Email</label>
+                        <input id="username1" type="username" aria-describedby="username1-help" pInputText value="fmariefaye99@gmail.com" />
+                    </div>
+                </div>
+    
+                <div class="my-grid">
+                    
+                    <div class="field">
+                        <label for="username1" class="block">Date</label>
+                        <input #dateBi type="date" aria-describedby="username1-help" pInputText  />
+                    </div>
+                        
+    
+                        <div class="field">
+                            <label for="username1" class="block">Heure</label>
+                            <input #hourBi type="time" aria-describedby="username1-help" pInputText  />
+                        </div>
+                        <div class="field">
+                            <label>Domaine médical</label>
+                            <p-autoComplete (onClear)="onSelectDomaine($event, true)" (onSelect)="onSelectDomaine($event, false)" [showClear]="true"  [(ngModel)]="selectedDomaines" placeholder="Spécialité..." [suggestions]="filteredDomaines" name="domaine" (completeMethod)="filterDomaines($event)" field="libelle" [dropdown]="true">
+                                <ng-template let-dom pTemplate="item">
+                                    <div class="country-item">
+                                        
+                                        <div>{{dom.libelle}}</div>
+                                    </div>
+                                </ng-template>
+                            </p-autoComplete>
+                        </div>
+                    
+                </div>
+                <i *ngIf="isSending" class="pi pi-spin pi-spinner" style="font-size: 2rem; color: #008000;"></i>
+                <button [disabled]="isSending" class="btn btn-valider" (click)="onSubmit(dateBi, hourBi)">Envoyer ma demenade</button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Annuler</button>
+        </div>
+    </ng-template>
+    
     <app-navbar></app-navbar>
     
     <div class="detail-cabinet animate__animated animate__backInDown" #target2>
-        <button class="btn btn-retour" pTooltip="Retourner à la liste" tooltipPosition="top">
+        <button (click)="back()" class="btn btn-retour" pTooltip="Retourner à la liste" tooltipPosition="top">
             <mat-icon>reply</mat-icon>
         </button>
         <div class="detail-content">
             <div class="text-center part-1">
-                <img src="../../../assets/images/dr.png" alt="" srcset="">
+                <img [src]="cabinets['logo']" alt="" srcset="">
                 <h2>Dr Bassirou Ba</h2>
             </div>
-            <div class="part-2">
-                <div class="title-1">
-                    <h1>Clinique Cheikh Bassirou Mbacké</h1>
-                    <br>
-                    <span><mat-icon> place</mat-icon> Dakar - Sicap Liberté 4 N° 5149Q</span>
-                    <span><mat-icon> phone</mat-icon> +221 33 124 56 78</span>
-                    <span><mat-icon>event</mat-icon> Lun - Sam</span>
-                    <span><mat-icon>schedule</mat-icon> 8h - 19h</span>
-                </div>
-                <div class="title-2">
-                    <br>
-                    <br>
-                    <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere esse dolore incidunt assumenda repudiandae nobis blanditiis cupiditate ratione vitae doloribus.</p>
-                </div>
-                
-                <button class="btn btn-dmd" (click)="openDemande(target)">
-                    Demander un rendez-vous
-                    <mat-icon size="80">keyboard_arrow_down</mat-icon>
-                </button>
-            
-            </div>
-            
-        </div>
-        <div class="part-bas">
-            <span>Médecine générale</span>
-            <span>Ophtalmologie</span>
-            <span>Pédiatrie</span>
-            <span>Cardialogie</span>
-        </div>
-    </div>
-    <div class="part-demande animate__animated animate__backInUp" #target [hidden]="!isView">
-        <div class="my-header">
-            <h1>Formulaire de demande de rendez-vous</h1>
-            <button class="btn" (click)="closeDemande(target2)" pTooltip="Annuler" tooltipPosition="top">
-                <mat-icon>close</mat-icon>
-            </button>
-        </div>
-        <form action="" class="my-form">
-            <div class="my-grid">
-                <div class="field">
-                    <label for="username1" class="block">Prénom</label>
-                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="Mamadou" />
-                </div>
-
-                <div class="field">
-                    <label for="username1" class="block">Nom</label>
-                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="NDAO" />
-                </div>
-
-                <div class="field">
-                    <label for="username1" class="block">Age</label>
-                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="28 ans" />
-                </div>
-                
-            </div>
-            <div class="my-grid">
-                <div class="field">
-                    <label for="username1" class="block">Sexe</label>
-                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="Homme" />
-                </div>
-
-                <div class="field">
-                    <label for="username1" class="block">Téléphone</label>
-                    <input id="username1" type="username" aria-describedby="username1-help" pInputText value="+221785824772" />
-                </div>
-
-                <div class="field">
-                    <label for="username1" class="block">Email</label>
-                    <input id="username1" type="username" aria-describedby="username1-help" pInputText value="itech.ndao@gmail.com" />
-                </div>
-            </div>
-
-            <div class="my-grid">
-                <div class="field">
-                    <label for="username1" class="block">Nom de la clinique</label>
-                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="Clinique Cheikh Bassirou Mbacké" />
-                </div>
-                <div class="field">
-                    <label for="username1" class="block">Téléphone de la clinique</label>
-                    <input id="username1" [disabled]="true" type="username" aria-describedby="username1-help" pInputText value="+221 33 800 00 12" />
-                </div>
-                <div class="my-flex">
-                    <div class="field">
-                        <label for="username1" class="block">Date</label>
-                        <p-calendar [(ngModel)]="value" [showIcon]="true" [minDate]="minDate"  dateFormat="dd-mm-yy" inputId="dateformat"></p-calendar>
+            <div class="cadre-right">
+                <div class="part-2">
+                    <div class="title-1">
+                        <h1>{{ cabinets['nom'] }}</h1>
+                        <br>
+                        <div class="part-info">
+                            <div class="part-info-1">
+                                <span><mat-icon> place</mat-icon> {{ cabinets['adresse'] }}</span>
+                                <span><mat-icon> phone</mat-icon> {{ cabinets['telephone'] }}</span>
+                            </div>
+                            <div class="part-info-2">
+                                <span><mat-icon>event</mat-icon> Lun - Sam</span>
+                                <span><mat-icon>schedule</mat-icon> 8h - 19h</span>
+                            </div>
+                        </div>
+                        
+                        
                     </div>
-
-                    <div class="field">
-                        <label for="username1" class="block">Heure</label>
-                        <p-calendar [(ngModel)]="value"  [timeOnly]="true" hourFormat="24" inputId="timeOnly"></p-calendar>
+                    <div>
+                        <button class="btn btn-dmd" (click)="openDemande(content)">
+                            Demander un rendez-vous
+                        </button>
                     </div>
+                    
+                
+                </div>
+
+                <div class="part-bas">
+                    <span *ngFor="let domaine of domaines">{{ domaine.libelle }}</span>
+                    
                 </div>
             </div>
-            <button class="btn btn-valider">Envoyer ma demenade</button>
-        </form>
+            
+        </div>
+        
     </div>
-    
 
     <app-footer></app-footer>
 </div>

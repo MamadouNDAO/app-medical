@@ -91,8 +91,8 @@ mat-icon{
 }
 
 .bloc-card{
-    width: 350px;
-    height: 130px;
+    width: 80%;
+    height: 150px;
     background: #fff;
     border-radius: 10px;
     -webkit-border-radius: 10px;
@@ -100,17 +100,34 @@ mat-icon{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    text-align: center;
-    color: var(--color-primary);
+    
+    
+}
+
+.bloc-card form{
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100px;
+  margin: auto;
 }
 
 .bloc-card h2{
     margin-top: 15px;
 }
 
-.bloc-card .btn{
-    border: var(--color-primary) solid 1px;
-    color: var(--color-primary);
+.btn1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.bloc-card .btn1 mat-icon{
+    color: #fff;
 }
 
 .bloc-card .btn:hover, .bloc-card .btn1{
@@ -191,15 +208,58 @@ mat-icon{
   color: #fff;
 }
 
-.home-section{
-  background: url(../../../assets/images/bg-12.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  height: 400px;
+
+.list{
+  min-height: 200px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  grid-auto-rows: minmax(80px, auto);
 }
 
+.clinik{
+  /*border: solid 1px green;*/
+  height: 90px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  background: #fff;
+}
+
+.clinik > img{
+  height: 75px;
+  width: 75px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  margin-left: 7px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.name-clinik{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  height: 60px;
+}
+
+.btn-clinik > .btn{
+  background: var(--color-primary);
+  color: #fff;
+  margin-right: 7px;
+}
 .second-section{
   background: #fff;
   height: 500px;

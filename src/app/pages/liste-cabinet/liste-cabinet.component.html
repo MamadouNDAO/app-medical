@@ -1,239 +1,87 @@
 <app-navbar></app-navbar>
-<div class="top-home">
-    <br>
-    <h1>Lorem ipsum dolor sit amet.</h1>
-    <button class="btn" (click)="openLg(content)" >Rechercher des cliniques</button>
-</div>
+<div class="bloc-cadre">
+    <div class="bloc-card">
+        <form >
+            <div class="my-col-5">
+                <h5>Filtrer par région</h5>
+                <p-autoComplete [showClear]="true" (onClear)="findDepartement($event, true)" (onSelect)="findDepartement($event, false)" [(ngModel)]="selectedRegions" placeholder="Région..." [suggestions]="filteredRegions" name="region" (completeMethod)="filterRegions($event)" field="libelle" [dropdown]="true">
+                    <ng-template let-reg pTemplate="item">
+                        <div class="country-item">
+                            
+                            <div>{{reg.libelle}}</div>
+                        </div>
+                    </ng-template>
+                </p-autoComplete>
+            </div>
 
-<ng-template #content let-modal>
-    <div class="modal-header">
-      <h4 class="modal-title"></h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body my-row">
-      <div class="col-4 modal-part-1">
-        <div class="layer">
+            <div class="my-col-5">
+                <h5>Filtrer par département</h5>
+                <p-autoComplete [showClear]="true" (onClear)="onSelectDepartement($event, true)" (onSelect)="onSelectDepartement($event, false)" [(ngModel)]="selectedDepartements" placeholder="Département..." [suggestions]="filteredDepartements" name="departm" (completeMethod)="filterDepartements($event)" field="libelle" [dropdown]="true">
+                    <ng-template let-dep pTemplate="item">
+                        <div class="country-item">
+                            
+                            <div>{{dep.libelle}}</div>
+                        </div>
+                    </ng-template>
+                </p-autoComplete>
+            </div>
+
+            <div class="my-col-5">
+                <h5>Filtrer spécialité</h5>
+                <p-autoComplete [showClear]="true" (onClear)="onSelectDomaine($event, true)" (onSelect)="onSelectDomaine($event, false)" [(ngModel)]="selectedDomaines" placeholder="Spécialité..." [suggestions]="filteredDomaines" name="domaine" (completeMethod)="filterDomaines($event)" field="libelle" [dropdown]="true">
+                    <ng-template let-dom pTemplate="item">
+                        <div class="country-item">
+                            
+                            <div>{{dom.libelle}}</div>
+                        </div>
+                    </ng-template>
+                </p-autoComplete>
+            </div>
+            <div class="my-col-5">
+                <h5>Filter par cabinet médical</h5>
+                <p-autoComplete [showClear]="true" (onClear)="onSelectCabinet($event, true)" (onSelect)="onSelectCabinet($event, false)" [(ngModel)]="selectedCabinets" placeholder="Cabinet médical..." [suggestions]="filteredCabinets" name="cabinet" (completeMethod)="filterCabinets($event)" field="nom" [dropdown]="true">
+                    <ng-template let-cab pTemplate="item">
+                        <div class="country-item">
+                            
+                            <div>{{cab.nom}}</div>
+                        </div>
+                    </ng-template>
+                </p-autoComplete>
+            </div>
+
             
-            <img src="../../../assets/images/logo-03.png" width="200" alt="" srcset="">
-            <h1 class="color-white">Toujours plus proche de vous!</h1>
-        </div>
-      </div>
-      <div class="col-8 modal-part-2">
-        <form action="">
-            <h2>Prise de rendez-vous</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing.</p>
-            <br>
-            <br>
-            <div class="my-row-2">
-                <div class="my-col-5">
-                    <h5>Choisir une région</h5>
-                    <p-autoComplete [(ngModel)]="selectedRegions" placeholder="Région..." [suggestions]="filteredRegions" name="region" (completeMethod)="filterRegions($event)" field="name" [dropdown]="true">
-                        <ng-template let-reg pTemplate="item">
-                            <div class="country-item">
-                                
-                                <div>{{reg.name}}</div>
-                            </div>
-                        </ng-template>
-                    </p-autoComplete>
-                </div>
-                <div class="my-col-5">
-                    <h5>Choisir un département</h5>
-                    <p-autoComplete [(ngModel)]="selectedDepartements" placeholder="Département..." [suggestions]="filteredDepartements" name="departm" (completeMethod)="filterDepartements($event)" field="name" [dropdown]="true">
-                        <ng-template let-dep pTemplate="item">
-                            <div class="country-item">
-                                
-                                <div>{{dep.name}}</div>
-                            </div>
-                        </ng-template>
-                    </p-autoComplete>
-                </div>
-              
-            </div>
-            <br><br>
-
-            <div class="my-row-2">
-                <div class="my-col-5">
-                    <h5>Choisir une spécialité</h5>
-                    <p-autoComplete [(ngModel)]="selectedDomaines" placeholder="Spécialité..." [suggestions]="filteredDomaines" name="domaine" (completeMethod)="filterDomaines($event)" field="name" [dropdown]="true">
-                        <ng-template let-dom pTemplate="item">
-                            <div class="country-item">
-                                
-                                <div>{{dom.name}}</div>
-                            </div>
-                        </ng-template>
-                    </p-autoComplete>
-                </div>
-                <div class="my-col-5">
-                    <h5>Choisir un cabinet médical</h5>
-                    <p-autoComplete [(ngModel)]="selectedCabinets" placeholder="Cabinet médical..." [suggestions]="filteredCabinets" name="cabinet" (completeMethod)="filterCabinets($event)" field="name" [dropdown]="true">
-                        <ng-template let-cab pTemplate="item">
-                            <div class="country-item">
-                                
-                                <div>{{cab.name}}</div>
-                            </div>
-                        </ng-template>
-                    </p-autoComplete>
-                </div>
-              
-            </div>
-            <button class="btn my-btn-search">Rechercher</button>
         </form>
-      </div>
+        <button class="btn btn1" (click)="goFiltre()">
+            Rechercher
+            <mat-icon>search</mat-icon>
+        </button>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Annuler</button>
+    
+</div>
+<div class="section home-section">
+    <div class="container">
+        
+        <div class="list">
+            <span *ngIf="isEmpty">{{infoMessage}}</span>
+        <!--Début liste des cliniques-->
+            <div class="clinik" *ngFor="let item of listCabinets">
+                <img [src]="item['logo']" alt="" srcset="">
+                <div class="name-clinik">
+                    <h2>{{ item['nom'] }}</h2>
+                    <span>{{ item['adresse'] }}</span>
+                </div>
+                <div class="btn-clinik">
+                    
+                    <a [routerLink]="['/cabinets', item['id']]" class="btn" >Voir plus</a>
+                </div>
+            </div>
+        <!--Fin liste des cliniques-->
+        </div>
+        <br>
+        <p-paginator [rows]="10" [totalRecords]="row" (onPageChange)="paginate($event)"></p-paginator>
+        <br>
     </div>
-</ng-template>
-
-
-
-<div class="section-list mrgt-50">
-    <div class="container my-flex-list">
-        <div class="my-card">
-            <img src="../../../assets/images/img-02.jpg" alt="" srcset="">
-            <div class="corp">
-                <div class="title">
-                    <div class="my-flex">
-                        <h2>Clinique Raby</h2>
-                    </div>
-                    <span>Dr Bassirou Ba</span>
-                </div>
-                <div class="address">
-                    <span>Sicap Liberté 4 N°5149Q</span>
-                    <span>7j/7 24h/24</span>
-                </div>
-
-                <div class="address">
-                    
-                    <div class="d-flex align-items-center">
-                        <mat-icon> place</mat-icon>
-                        <span>Dakar - Guédaiwaye</span>
-                    </div>
-                    <button class="btn">Voir plus</button>
-                </div>
-            </div>
-        </div>
-        <div class="my-card">
-            <img src="../../../assets/images/img-01.jpg" alt="" srcset="">
-            <div class="corp">
-                <div class="title">
-                    <div class="my-flex">
-                        <h2>Clinique Raby</h2>
-                    </div>
-                    <span>Dr Bassirou Ba</span>
-                </div>
-                <div class="address">
-                    <span>Sicap Liberté 4 N°5149Q</span>
-                    <span>7j/7 24h/24</span>
-                </div>
-
-                <div class="address">
-                    
-                    <div class="d-flex align-items-center">
-                        <mat-icon> place</mat-icon>
-                        <span>Dakar - Guédaiwaye</span>
-                    </div>
-                    <button class="btn">Voir plus</button>
-                </div>
-            </div>
-        </div>
-        <div class="my-card">
-            <img src="../../../assets/images/img-06.jpg" alt="" srcset="">
-            <div class="corp">
-                <div class="title">
-                    <div class="my-flex">
-                        <h2>Clinique Raby</h2>
-                    </div>
-                    <span>Dr Bassirou Ba</span>
-                </div>
-                <div class="address">
-                    <span>Sicap Liberté 4 N°5149Q</span>
-                    <span>7j/7 24h/24</span>
-                </div>
-
-                <div class="address">
-                    
-                    <div class="d-flex align-items-center">
-                        <mat-icon> place</mat-icon>
-                        <span>Dakar - Guédaiwaye</span>
-                    </div>
-                    <button class="btn">Voir plus</button>
-                </div>
-            </div>
-        </div>
-        <div class="my-card">
-            <img src="../../../assets/images/img-05.jpg" alt="" srcset="">
-            <div class="corp">
-                <div class="title">
-                    <div class="my-flex">
-                        <h2>Clinique Raby</h2>
-                    </div>
-                    <span>Dr Bassirou Ba</span>
-                </div>
-                <div class="address">
-                    <span>Sicap Liberté 4 N°5149Q</span>
-                    <span>7j/7 24h/24</span>
-                </div>
-
-                <div class="address">
-                    
-                    <div class="d-flex align-items-center">
-                        <mat-icon> place</mat-icon>
-                        <span>Dakar - Guédaiwaye</span>
-                    </div>
-                    <button class="btn">Voir plus</button>
-                </div>
-            </div>
-        </div>
-        <div class="my-card">
-            <img src="../../../assets/images/img-04.jpg" alt="" srcset="">
-            <div class="corp">
-                <div class="title">
-                    <div class="my-flex">
-                        <h2>Clinique Raby</h2>
-                    </div>
-                    <span>Dr Bassirou Ba</span>
-                </div>
-                <div class="address">
-                    <span>Sicap Liberté 4 N°5149Q</span>
-                    <span>7j/7 24h/24</span>
-                </div>
-
-                <div class="address">
-                    
-                    <div class="d-flex align-items-center">
-                        <mat-icon> place</mat-icon>
-                        <span>Dakar - Guédaiwaye</span>
-                    </div>
-                    <button class="btn">Voir plus</button>
-                </div>
-            </div>
-        </div>
-        <div class="my-card">
-            <img src="../../../assets/images/img-03.jpg" alt="" srcset="">
-            <div class="corp">
-                <div class="title">
-                    <div class="my-flex">
-                        <h2>Clinique Raby</h2>
-                    </div>
-                    <span>Dr Bassirou Ba</span>
-                </div>
-                <div class="address">
-                    <span>Sicap Liberté 4 N°5149Q</span>
-                    <span>7j/7 24h/24</span>
-                </div>
-
-                <div class="address">
-                    
-                    <div class="d-flex align-items-center">
-                        <mat-icon> place</mat-icon>
-                        <span>Dakar - Guédaiwaye</span>
-                    </div>
-                    <button class="btn">Voir plus</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 </div>
 
 <app-footer></app-footer>

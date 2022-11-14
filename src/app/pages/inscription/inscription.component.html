@@ -1,4 +1,6 @@
+
 <div class="lapage">
+    <p-toast></p-toast>
     <div class="part1">
 
     </div>
@@ -7,7 +9,7 @@
             <h1>Inscrivez-vous</h1>
         </div>
 
-        <form action="">
+        <form [formGroup]="inscriptForm">
             <div class="cadre-photo">
                 <div class="profil">
                     <img width="100" height="100"  [src]="urlImage" alt="">
@@ -18,35 +20,51 @@
                 <input #inputField type="file" hidden (change)="getImageFile($event)">
             </div>
             <div class="my-grid">
-                <div class="field form-group">
-                    <label for="exampleFormControlInput1">Votre prénom</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Votre prénom">
+                <div class="field form-group my-field">
+                    <label class="my-label" for="exampleFormControlInput1">Votre prénom</label>
+                    <input type="text" class="form-control" formControlName="prenom" placeholder="Votre prénom" required>
+                    <div *ngIf="prenom!.invalid && (prenom!.dirty || prenom!.touched)" class="my-alert">
+                        <small class="invalid">Prénom obligatoire</small>
+                    </div>
                 </div>
-                <div class="field form-group">
-                    <label for="exampleFormControlInput1">Votre nom</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Votre nom">
-                </div>
-            </div>
-
-            <div class="my-grid">
-                <div class="field form-group">
-                    <label for="exampleFormControlInput1">Votre mot de passe</label>
-                    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Mot de passe">
-                </div>
-                <div class="field form-group">
-                    <label for="exampleFormControlInput1">Veuillez confirmer votre mot de passe</label>
-                    <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Confirmation mot de passe">
+                
+                <div class="field form-group my-field">
+                    <label class="my-label" for="exampleFormControlInput1">Votre nom</label>
+                    <input type="text" class="form-control" formControlName="nom" placeholder="Votre nom" required>
+                    <div *ngIf="nom!.invalid && (nom!.dirty || nom!.touched)" class="my-alert">
+                        <small class="invalid">Nom obligatoire</small>
+                    </div>
                 </div>
             </div>
 
             <div class="my-grid">
-                <div class="field form-group">
-                    <label for="exampleFormControlInput1">Votre date de naissance</label>
-                    <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="jj/mm/aaaa">
+                <div class="field form-group my-field">
+                    <label class="my-label" for="exampleFormControlInput1">Votre mot de passe</label>
+                    <input type="password" class="form-control" formControlName="password"  placeholder="Mot de passe" required>
+                    <div *ngIf="password!.invalid && (password!.dirty || password!.touched)" class="my-alert">
+                        <small class="invalid">Mot de passe obligatoire</small>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Genre</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                <div class="field form-group my-field">
+                    <label class="my-label" for="exampleFormControlInput1">Confirmation mot de passe</label>
+                    <input #passCheck type="password" class="form-control" (keyup)="verifPass(passCheck)"  placeholder="****">
+                    <div *ngIf="!passwordConformed" class="my-alert">
+                        <small class="invalid">Les mots de passe ne sont pas identiques</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-grid">
+                <div class="field form-group my-field">
+                    <label class="my-label" for="exampleFormControlInput1">Votre date de naissance</label>
+                    <input type="date" class="form-control" formControlName="dateNaissance"  placeholder="jj/mm/aaaa" required>
+                    <div *ngIf="dateNaissance!.invalid && (dateNaissance!.dirty || dateNaissance!.touched)" class="my-alert">
+                        <small class="invalid">Date de naissance obligatoire</small>
+                    </div>
+                </div>
+                <div class="form-group my-field">
+                    <label class="my-label" for="exampleFormControlSelect1">Genre</label>
+                    <select class="form-control" formControlName="genre" required>
                       <option>Homme</option>
                       <option>Femme</option>
                     </select>
@@ -54,14 +72,30 @@
                 
             </div>
 
+            <div class="my-grid">
+                <div class="field form-group my-field">
+                    <label class="my-label" for="exampleFormControlInput1">Votre E-mail</label>
+                    <input type="email" class="form-control" formControlName="email"  placeholder="marie@mail.com" required>
+                    <div *ngIf="email!.invalid && (email!.dirty || email!.touched)" class="my-alert">
+                        <small class="invalid">Email obligatoire</small>
+                    </div>
+                </div>
+                <div class="field form-group my-field">
+                    <label class="my-label" for="exampleFormControlInput1">Téléphone</label>
+                    <input type="text" class="form-control" formControlName="telephone" placeholder="771234567" required>
+                    <div *ngIf="telephone!.invalid && (telephone!.dirty || dateNaissance!.touched)" class="my-alert">
+                        <small class="invalid">Téléphone obligatoire</small>
+                    </div>
+                </div>
+            </div>
 
-            <div class="field form-group">
-                <label for="exampleFormControlInput1">Votre addresse</label>
-                <textarea type="text" class="form-control" id="exampleFormControlInput1" placeholder="Votre addresse"></textarea>
+            <div class="field form-group my-field">
+                <label class="my-label" for="exampleFormControlInput1">Votre addresse</label>
+                <textarea type="text" class="form-control" formControlName="adresse" placeholder="Votre addresse"></textarea>
             </div>
 
             <div class="my-grid-3">
-                <button class="btn mybtn">Enregistrer</button>
+                <button type="submit" class="btn mybtn" (click)="onSubmit()" >Enregistrer</button>
                 <div></div>
                 <a routerLink="/login">
                     <button class="btn mybtn2">Se connecter</button>
@@ -70,3 +104,4 @@
         </form>
     </div>
 </div>
+<ngx-ui-loader></ngx-ui-loader>

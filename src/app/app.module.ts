@@ -23,6 +23,18 @@ import {CalendarModule} from 'primeng/calendar';
 import {HttpClientModule} from '@angular/common/http';
 import { InscriptionComponent } from './pages/inscription/inscription.component';
 import {MatButtonModule} from '@angular/material/button';
+import { NgxUiLoaderModule } from "ngx-ui-loader";
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+import {PaginatorModule} from 'primeng/paginator';
+import { authInterceptorProviders } from './services/interceptor.service';
+import {DialogModule} from 'primeng/dialog';
+import { RendezVousComponent } from './pages/rendez-vous/rendez-vous.component';
+import {BadgeModule} from 'primeng/badge';
+import { DossierMedicalComponent } from './pages/dossier-medical/dossier-medical.component';
+import { SqueletteComponent } from './share/squelette/squelette.component';
+import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { GuardService } from './services/guard.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +47,10 @@ import {MatButtonModule} from '@angular/material/button';
     SearchCabinetComponent,
     DetailCabinetComponent,
     ScrollToBottomDirective,
-    InscriptionComponent
+    InscriptionComponent,
+    RendezVousComponent,
+    DossierMedicalComponent,
+    SqueletteComponent
   ],
   imports: [
     BrowserModule,
@@ -51,9 +66,21 @@ import {MatButtonModule} from '@angular/material/button';
     CalendarModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    NgxUiLoaderModule,
+    ToastModule,
+    PaginatorModule,
+    DialogModule,
+    BadgeModule,
+    JwtModule
   ],
-  providers: [],
+  providers: [
+    MessageService, 
+    authInterceptorProviders,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService,
+    GuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

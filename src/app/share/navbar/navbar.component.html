@@ -1,23 +1,30 @@
 <div class="corp">
     <div class="banner d-flex justify-content-end text-center">
-        <button class="btn">
-
-        
-        <img src="../../../assets/images/heureux.png" width="25" height="25" alt="" srcset="">
-        <span>BIENVENUE <small style="color: #666;">Mamadou!  </small> </span>
-        <img src="../../../assets/images/profil.jpg" class="profil" alt="" srcset="">
+        <div class="name-user">
+            <span>BIENVENUE <small style="color: #666;"> {{ prenom }} </small> </span>
+            <img [src]="photo" class="profil" alt="" srcset="">
+        </div>
+       
+        <button class="btn btn-power" (click)="deconnect()">
+            <mat-icon>settings_power</mat-icon>
+            Se déconnecter
         </button>
-        <button class="btn">Se déconnecter</button>
     </div>
-    <div class="top-nav d-flex justify-content-between">
+    <div class="top-nav">
         <img style="margin-left: 20px;" src="../../../assets/images/logo-03.png" width="120" height="70" alt="" srcset="">
         
-        <div class="naviga">
+        <!-- <div class="naviga">
             <button class="btn btn-nav btn-act">Acceuil</button>
             <button class="btn btn-nav">Consultation</button>
             <button class="btn btn-nav">rendez-vous</button>
             <button class="btn btn-nav">Dossier médical</button>
-        </div>
+        </div> -->
+        <ul class="naviga">
+            <a routerLink="/acceuil" routerLinkActive="active"><li>Acceuil</li></a> 
+            <a routerLink="/rendez-vous" routerLinkActive="active"><li>Rendez-vous</li></a>
+            <a routerLink="/dossier-medical" routerLinkActive="active"><li>Dossier médical</li></a>
+            <a routerLink="/cabinets-medicaux" routerLinkActive="active"><li>Cabinets médicaux</li></a>
+        </ul>
 
         <!--<img src="../../../assets/images/right.png" width="150" height="150" alt="" srcset="">-->
     </div>
