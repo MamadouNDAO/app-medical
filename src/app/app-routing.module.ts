@@ -9,6 +9,7 @@ import { RendezVousComponent } from './pages/rendez-vous/rendez-vous.component';
 import { DossierMedicalComponent } from './pages/dossier-medical/dossier-medical.component';
 import { SqueletteComponent } from './share/squelette/squelette.component';
 import { GuardService as Guard } from './services/guard.service';
+import { HomeMdComponent } from './medecin/home/home.component';
 
 const routes: Routes = [
   {path: "", pathMatch: 'full', redirectTo: 'login'},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: 'inscription', component: InscriptionComponent, canActivate: [Guard]},
   {path: 'racine', component: SqueletteComponent, canActivate: [Guard]},
   {path:'rendez-vous', component: RendezVousComponent, canActivate: [Guard]},
-  {path: 'dossier-medical', component: DossierMedicalComponent, canActivate: [Guard]}
+  {path: 'dossier-medical', component: DossierMedicalComponent, canActivate: [Guard]},
+  {path: 'medecin/acceuil', component: HomeMdComponent}
 ];
 
 @NgModule({

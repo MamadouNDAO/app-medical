@@ -35,6 +35,8 @@ import { DossierMedicalComponent } from './pages/dossier-medical/dossier-medical
 import { SqueletteComponent } from './share/squelette/squelette.component';
 import { JwtHelperService, JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { GuardService } from './services/guard.service';
+import { NavbarMdComponent } from './medecin/navbar/navbar.component';
+import { HomeMdComponent } from './medecin/home/home.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,9 @@ import { GuardService } from './services/guard.service';
     InscriptionComponent,
     RendezVousComponent,
     DossierMedicalComponent,
-    SqueletteComponent
+    SqueletteComponent,
+    NavbarMdComponent,
+    HomeMdComponent
   ],
   imports: [
     BrowserModule,

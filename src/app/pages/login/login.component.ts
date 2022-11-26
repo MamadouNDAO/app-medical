@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
               localStorage.setItem("email", resp.data.email)
               localStorage.setItem("genre", resp.data.genre)
               localStorage.setItem("telephone", resp.data.telephone)
-
+              console.log(this.decoded.roles[0])
               var role = this.decoded.roles[0]
               switch(role) {
                 case "ROLE_PATIENT":
@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
                   this.router.navigate(['acceuil'])
                   break;
                 case "ROLE_MEDECIN":
-                  this.router.navigate(['acceuil'])
+                  this.router.navigate(['medecin/acceuil'])
                   break;
               }
             }
